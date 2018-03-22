@@ -25,9 +25,14 @@ public class Receipt {
 	@Column(nullable = false)
 	private double totalTimeParked;
 
+	@Column(nullable = false)
+	private double timeOut;
+
 	private String ticketLost;
 
 	private double feeCollected;
+
+	private String paymentMethod;
 
 	public Receipt() {
 
@@ -78,6 +83,30 @@ public class Receipt {
 
 	public void setFeeCollected(double feeCollected) {
 		this.feeCollected = feeCollected;
+	}
+
+	public Ticket getTicket() {
+		return ticket;
+	}
+
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
+	}
+
+	public double getTimeOut() {
+		return timeOut;
+	}
+
+	public void setTimeOut(double timeOut) {
+		this.timeOut = timeOut;
+	}
+
+	public String getPaymentMethod() {
+		return paymentMethod;
+	}
+
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
 	}
 
 }

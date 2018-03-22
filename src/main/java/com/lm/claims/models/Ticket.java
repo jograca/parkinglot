@@ -20,20 +20,13 @@ public class Ticket {
 	private Receipt receipt;
 
 	@Column(nullable = false)
-	private String carId;
-
-	@Column(nullable = false)
 	private double timeIn;
-
-	@Column(nullable = false)
-	private double timeOut;
 
 	public Ticket() {
 
 	}
 
-	public Ticket(String carId, double timeIn) {
-		this.carId = carId;
+	public Ticket(double timeIn) {
 		this.timeIn = timeIn;
 	}
 
@@ -43,14 +36,6 @@ public class Ticket {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getCarId() {
-		return carId;
-	}
-
-	public void setCarId(String carId) {
-		this.carId = carId;
 	}
 
 	public double getTimeIn() {
@@ -67,14 +52,6 @@ public class Ticket {
 
 	public void setReceipt(Receipt receipt) {
 		this.receipt = receipt;
-	}
-
-	public double getTimeOut() {
-		return timeOut;
-	}
-
-	public void setTimeOut(double timeOut) {
-		this.timeOut = timeOut;
 	}
 
 }
