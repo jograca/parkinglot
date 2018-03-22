@@ -2,14 +2,18 @@ package com.lm.claims.models;
 
 public class TicketProcessor {
 
-	private Receipt receipt = new Receipt();
+	private Receipt receipt;
 	private TicketCalculator ticketCalculator;
 	static double totalRevenue = 0;
 
-	public double processTicket(Ticket ticket) {
+	public TicketProcessor(TicketCalculator ticketCalculator) {
+		this.ticketCalculator = ticketCalculator;
+	}
+
+	public Receipt processTicket(Ticket ticket) {
 
 		// calculate fee
-		double result = ticketCalculator.calculateFee(ticket.getTimeIn(), receipt.getTimeOut());
+		double result = ticketCalculator.calculateFee(ticket.getTimeIn(), receipt.getTimeOut(), ticket.isTicketLost());
 
 		// pay
 		if ("CreditCard".equals(receipt.getPaymentMethod())) {
@@ -19,13 +23,13 @@ public class TicketProcessor {
 		}
 
 		// generate receipt
-		receipt = new Receipt(null, receipt.getTimeOut() - ticket.getTimeIn(), receipt.getTicketLost(), result);
+		receipt = new Receipt((receipt.getTimeOut() - ticket.getTimeIn()), result);
 
 		// reporting
 		totalRevenue += result;
 		System.out.println("Total Revenue: " + totalRevenue);
 
-		return result;
+		return receipt;
 	}
 
 }

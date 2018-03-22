@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lm.claims.models.Receipt;
-import com.lm.claims.models.Ticket;
-import com.lm.claims.models.TicketProcessor;
 import com.lm.claims.repositories.ReceiptRepository;
 
 @RestController
@@ -21,8 +19,6 @@ import com.lm.claims.repositories.ReceiptRepository;
 public class ReceiptApiController {
 
 	private ReceiptRepository receiptRepo;
-	private TicketProcessor ticketMachine;
-	private Ticket ticket;
 
 	public ReceiptApiController(ReceiptRepository receiptRepo) {
 		this.receiptRepo = receiptRepo;
@@ -45,8 +41,6 @@ public class ReceiptApiController {
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Receipt create(@RequestBody Receipt receipt) {
-		ticketMachine.processTicket(ticket);
-		ticketMachine.calculateFee(ticket);
 		return receiptRepo.save(receipt);
 	}
 

@@ -20,15 +20,10 @@ public class Receipt {
 	private Ticket ticket;
 
 	@Column(nullable = false)
-	private String carId;
-
-	@Column(nullable = false)
 	private double totalTimeParked;
 
 	@Column(nullable = false)
 	private double timeOut;
-
-	private String ticketLost;
 
 	private double feeCollected;
 
@@ -38,23 +33,13 @@ public class Receipt {
 
 	}
 
-	public Receipt(String carId, double totalTimeParked, String ticketLost, double feeCollected) {
-		this.carId = carId;
+	public Receipt(double totalTimeParked, double feeCollected) {
 		this.totalTimeParked = totalTimeParked;
-		this.ticketLost = ticketLost;
 		this.feeCollected = feeCollected;
-	}
-
-	public String getCarId() {
-		return carId;
 	}
 
 	public double getTotalTimeParked() {
 		return totalTimeParked;
-	}
-
-	public String getTicketLost() {
-		return ticketLost;
 	}
 
 	public double getFeeCollected() {
@@ -69,16 +54,8 @@ public class Receipt {
 		this.id = id;
 	}
 
-	public void setCarId(String carId) {
-		this.carId = carId;
-	}
-
 	public void setTotalTimeParked(double totalTimeParked) {
 		this.totalTimeParked = totalTimeParked;
-	}
-
-	public void setTicketLost(String ticketLost) {
-		this.ticketLost = ticketLost;
 	}
 
 	public void setFeeCollected(double feeCollected) {

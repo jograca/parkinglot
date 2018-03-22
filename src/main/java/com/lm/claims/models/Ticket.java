@@ -22,12 +22,15 @@ public class Ticket {
 	@Column(nullable = false)
 	private double timeIn;
 
+	private boolean ticketLost;
+
 	public Ticket() {
 
 	}
 
-	public Ticket(double timeIn) {
+	public Ticket(double timeIn, boolean ticketLost) {
 		this.timeIn = timeIn;
+		this.ticketLost = ticketLost;
 	}
 
 	public int getId() {
@@ -52,6 +55,14 @@ public class Ticket {
 
 	public void setReceipt(Receipt receipt) {
 		this.receipt = receipt;
+	}
+
+	public boolean isTicketLost() {
+		return ticketLost;
+	}
+
+	public void setTicketLost(boolean ticketLost) {
+		this.ticketLost = ticketLost;
 	}
 
 }
